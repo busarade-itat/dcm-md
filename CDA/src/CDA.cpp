@@ -152,10 +152,9 @@ CDA::run (
 	std::vector<EMSet>::iterator it;
 
 	for (it = bset.begin(); it != bset.end(); it++){
-	    it += 2;
-		// pid_t pid = fork();
+		pid_t pid = fork();
 
-		// if (pid == 0) {
+		if (pid == 0) {
 			EMSet t = *(it);
 			std::vector<int> episode = t.getShortMSet();
 
@@ -196,14 +195,14 @@ CDA::run (
                 }
 			}
             return false;
-		/* }
+		}
 		else if (pid > 0) {
             waitpid(pid, nullptr,0);
         }
 		else {
 			std::cerr << "Fork error" << std::endl;
 			return true;
-		} */
+		}
 	}
 	return true;
 }
