@@ -256,38 +256,8 @@ namespace ripper {
         std::vector<std::vector<std::vector<double>>> negativeSingleData;
 
         for (int i = 0; i < DomainElementFactory::VECTOR_SIZE; ++i) {
-            // positiveSingleData = splitDatasetPart(positiveData, i);
-            //negativeSingleData = splitDatasetPart(negativeData, i);
-
-            // A->B = index 0
-            // B->C = index 1
-            // A->C = index 2
-
-            // pos
-            // SID=1
-            std::vector<std::vector<double>> sid1;
-
-            // ex1
-            sid1.push_back(std::vector<double>{1, -4.6, 6.3});
-            // ex2
-            sid1.push_back(std::vector<double>{0, 9.6, 0});
-
-            positiveSingleData.push_back(sid1);
-
-            // SID=2
-            std::vector<std::vector<double>> sid2;
-
-            sid2.push_back(std::vector<double>{1.6, 4, 3.9});
-
-            positiveSingleData.push_back(sid2);
-
-            // neg
-            // SID=3
-            std::vector<std::vector<double>> sid3;
-
-            sid3.push_back(std::vector<double>{-3.6, 0, 0});
-
-            negativeSingleData.push_back(sid3);
+            positiveSingleData = splitDatasetPart(positiveData, i);
+            negativeSingleData = splitDatasetPart(negativeData, i);
 
             singleInit(n, positiveSingleData, negativeSingleData, 1, irep, false);
             std::vector<SingleRule> result = singleRun(print, fmin, gmin);
